@@ -1,14 +1,11 @@
 # SharkMan
 
-__________________________
-
 #### About
 
 Sharkman is a goofy and intentionally easy platformer built in Unity for fun. Don't take it very seriously. 
 
 I use it mostly for testing purposes of random things in Unity.
- 
-    
+
 
 #### Credits
 

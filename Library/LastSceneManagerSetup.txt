@@ -1,4 +1,4 @@
 sceneSetups:
-- path: G:/Unity/Unity Projects/Growin up/GrowingUp/Assets/test.unity
+- path: Assets/Scenes/Main Menu.unity
   isLoaded: 1
   isActive: 1
