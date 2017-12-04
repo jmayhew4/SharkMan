@@ -11,7 +11,7 @@ public class Global : MonoBehaviour {
 
 	//Player Reference Variable
 	public GameObject player;
-	public PlayerManager playerManager;
+	public SharkmanController playerManager;
 	public GameObject playerDialogueCanvas;
 	public Text playerText;
 	
@@ -27,7 +27,7 @@ public class Global : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
-		playerManager = player.GetComponent<PlayerManager>();
+		playerManager = player.GetComponent<SharkmanController>();
 		playerDialogueCanvas = player.transform.Find("DialogueCanvas").gameObject;
 		playerText = playerDialogueCanvas.transform.Find("Text").GetComponent<Text>();
 		

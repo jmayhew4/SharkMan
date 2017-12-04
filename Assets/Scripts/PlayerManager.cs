@@ -18,8 +18,6 @@ public class PlayerManager : MonoBehaviour {
 
 		if (!inDialogue) {
 
-			this.transform.Translate(Input.GetAxis("Horizontal") * 10 * Time.deltaTime,0,0);
-
 			if (npcInRange && Input.GetButtonDown("Submit")) {
 				inDialogue = true;
 				npcInRange.GetComponent<NPCBehaviour>().dialogueUtility.InitDialogue();

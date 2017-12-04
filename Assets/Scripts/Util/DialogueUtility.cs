@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueUtility : MonoBehaviour {
 
 	//Player References
-	PlayerManager playerManager;
+	SharkmanController playerManager;
 	GameObject playerDialogueCanvas;
 	Text playerText;
 
