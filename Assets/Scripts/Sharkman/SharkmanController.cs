@@ -22,8 +22,11 @@ public class SharkmanController : MonoBehaviour {
     public int maxHealth = 3;
     public int currentHealth;
 	public int dogBonesCollected = 0;
-    
 
+    //Dialog Requirments
+    public GameObject npcInRange = null;
+    public bool inDialogue;
+    
     
     // Use this for initialization
 	void Start () {
@@ -38,6 +41,9 @@ public class SharkmanController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // checking if player is talking or not
+        if(!inDialogue){
+
         // Checks if you can collide with something
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("PlatformLow"));
         if(isGrounded == true)
@@ -81,6 +87,14 @@ public class SharkmanController : MonoBehaviour {
         }
 
         /////////////////////////////////////////////////////////////////////////
+        // Dialogue
+        if (npcInRange && Input.GetButtonDown("Submit")) {
+                inDialogue = true;
+                npcInRange.GetComponent<NPCBehaviour>().dialogueUtility.InitDialogue();
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////
         // SpawnPoint location reset, if player has fallen off the main platforms
         if (transform.position.y < -20)
         {
@@ -116,8 +130,30 @@ public class SharkmanController : MonoBehaviour {
 		{
 			Die();
 		}
+
+        }//end dialogue
     }
 
+    // collision for NPC interaction
+    void OnTriggerEnter2D (Collider2D other) {
+
+        if (other.CompareTag("NPC")) {
+            other.GetComponent<NPCBehaviour>().dialogueUtility.ShowDialogueIcon(true);
+            npcInRange = other.gameObject;
+        }
+
+    }
+
+    void OnTriggerExit2D (Collider2D other) {
+
+        if (other.CompareTag("NPC")) {
+            other.GetComponent<NPCBehaviour>().dialogueUtility.ShowDialogueIcon(false);
+            npcInRange = null;
+        }
+        
+    }
+    /////////////////////////////////////////////////////
+    // Assorted character functions
     // Flipping character
     void Flip (){
         facingRight = !facingRight;

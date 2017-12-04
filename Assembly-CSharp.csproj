@@ -53,10 +53,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\FeedTheDog\Collectables.cs" />
      <Compile Include="Assets\Scripts\FeedTheDog\LevelEnd.cs" />
+     <Compile Include="Assets\Scripts\Global.cs" />
      <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\NPCBehaviour.cs" />
+     <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Sharkman\SharkmanController.cs" />
      <Compile Include="Assets\Scripts\Sharkman\SoundController.cs" />
+     <Compile Include="Assets\Scripts\Util\DialogueUtility.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>H:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
