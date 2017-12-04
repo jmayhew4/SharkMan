@@ -18,10 +18,9 @@ public class SharkmanController : MonoBehaviour {
     
     public AudioClip jumpSound;
     
-    // Stats n such
-    public int currentHealth;
+    // Stats n such 
     public int maxHealth = 3;
-    
+    public int currentHealth;
 	public int dogBonesCollected = 0;
     
 
@@ -74,7 +73,7 @@ public class SharkmanController : MonoBehaviour {
             if (facingRight == true) { Flip(); }
         }
 
-        else if (Input.GetAxis("Horizontal") == 0) // Stopped
+        else if (Input.GetAxis("Horizontal") == 0) // Standing Still
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
             animator.SetBool("isWalking", false);
@@ -82,12 +81,15 @@ public class SharkmanController : MonoBehaviour {
         }
 
         /////////////////////////////////////////////////////////////////////////
-        // SpawnPoint location reset
+        // SpawnPoint location reset, if player has fallen off the main platforms
         if (transform.position.y < -20)
         {
-            Die();
+            transform.position = spawnPoint.position;
+            currentHealth = currentHealth-1;
+
+            //if no health in effect, just use either
             //transform.position = spawnPoint.position;
-            
+            //Die();
         }
 
 
@@ -104,7 +106,7 @@ public class SharkmanController : MonoBehaviour {
             hasDoubleJumped = true;
             soundController.PlayOneShot(jumpSound, .45f);
         }
-        
+        // Future proofing if health pickups becomes a thing
         if(currentHealth > maxHealth)
         {
 			currentHealth = maxHealth;
@@ -125,7 +127,7 @@ public class SharkmanController : MonoBehaviour {
     }
     
     void Die(){
-		// Restarts the game
+		// load the game over screen
 		Application.LoadLevel(3);
 	}
 }
